@@ -1,5 +1,20 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Setup
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   bun install
+   ```
+3. Copy the environment file and add your API keys:
+   ```bash
+   cp .env.example .env.local
+   ```
+4. Edit `.env.local` and add your Hugging Face API token:
+   - Get a token from [https://huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)
+   - Replace `your_hugging_face_token_here` with your actual token
+
 ## Getting Started
 
 First, run the development server:
