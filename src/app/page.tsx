@@ -23,15 +23,14 @@ export default function Home() {
           A minimal, fast, and privacy-friendly tool to scan an item, identify its waste type, and choose pickup or proper disposal.
         </p>
 
-        <div className="flex items-center justify-center gap-3 mt-9">
+        <div className="flex items-center justify-center gap-3 mt-9 border-[#1b3a29] rounded-full border-2">
           <Link href="/classify" className="relative inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-white rounded-lg group">
             <span className="absolute inset-0 bg-[#0e2a1d] rounded-lg -z-10" />
             <span className="absolute inset-0 bg-gradient-to-b from-emerald-700/60 to-emerald-700/30 rounded-lg opacity-0 transition-opacity -z-10 group-hover:opacity-100" />
             <span className="absolute inset-0 rounded-lg -z-20 ring-1 ring-[#1b3a29]" />
-            Scan an image
+            <span className="text-md text-accent-gradient font-medium">Scan an image</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="opacity-90"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </Link>
-          <a href="#how" className="text-sm text-neutral-300 hover:text-white/90">How it works</a>
         </div>
       </section>
 

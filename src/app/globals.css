@@ -84,3 +84,32 @@ body {
   color: transparent;
 }
 
+/* Dark form fields (including autofill) */
+.glass input[type="text"],
+.glass input[type="tel"],
+.glass input[type="email"],
+.glass input[type="number"],
+.glass input[type="search"],
+.glass textarea,
+.glass select {
+  background-color: #0a180e !important;
+  color: #e5e7eb !important; /* neutral-200 */
+  caret-color: #e5e7eb;
+}
+
+.glass input::placeholder,
+.glass textarea::placeholder {
+  color: #9ca3af; /* neutral-400 */
+}
+
+/* WebKit autofill fix */
+.glass input:-webkit-autofill,
+.glass textarea:-webkit-autofill,
+.glass select:-webkit-autofill {
+  -webkit-text-fill-color: #e5e7eb !important;
+  caret-color: #e5e7eb;
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 0px 1000px #0a180e inset;
+          box-shadow: 0 0 0px 1000px #0a180e inset;
+}
+
