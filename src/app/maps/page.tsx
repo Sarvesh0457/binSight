@@ -39,7 +39,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="max-h-screen text-white bg-black bg-grid bg-noise hero-spotlight">
+    <main className="min-h-screen text-white bg-black bg-grid bg-noise hero-spotlight">
       <div className="mx-auto px-4 py-14 max-w-5xl md:px-8">
         <header className="mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 text-xs text-neutral-300 bg-[#07100c]/70 rounded-full border-[#1b3a29] border">
