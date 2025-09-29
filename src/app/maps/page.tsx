@@ -92,7 +92,7 @@ export default function HomePage() {
         </section>
 
         <section className="mt-4 p-2 bg-[#0a160f]/70 rounded-xl border-[#1b3a29] border backdrop-blur-md">
-          <div className="overflow-hidden h-[500px] rounded-lg">
+          <div className="overflow-hidden h-[560px] rounded-lg">
             {yards.length > 0 ? (
               <Map yards={yards} />
             ) : (
