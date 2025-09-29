@@ -1,4 +1,3 @@
-
 import { NextRequest,NextResponse } from "next/server";
 
 
@@ -6,16 +5,41 @@ const wasteMapping = {
     recyclable: [
         'bottle', 'plastic bag', 'can', 'tin can', 'aluminum can', 'cardboard', 'paper', 'newspaper',
         'magazine', 'glass', 'jar', 'container', 'box', 'carton', 'metal', 'steel', 'iron',
-        'book', 'envelope', 'wrapper', 'packaging'
+        'book', 'envelope', 'wrapper', 'packaging', 'plastic bottle', 'soda can', 'beer can',
+        'wine bottle', 'milk carton', 'cereal box', 'pizza box', 'shopping bag', 'grocery bag',
+        'aluminum foil', 'tin foil', 'paper bag', 'receipt', 'flyer', 'brochure', 'catalog',
+        'phone book', 'tissue box', 'egg carton', 'yogurt container', 'juice box', 'tetra pak',
+        'plastic container', 'tupperware', 'bottle cap', 'lid', 'ring pull', 'tab'
     ],
     compostable: [
         'banana', 'apple', 'orange', 'fruit', 'vegetable', 'carrot', 'potato', 'tomato',
         'lettuce', 'cabbage', 'broccoli', 'corn', 'onion', 'garlic', 'bread', 'cake',
-        'cookie', 'food', 'plant', 'flower', 'leaf', 'wood', 'stick', 'branch'
+        'cookie', 'food', 'plant', 'flower', 'leaf', 'wood', 'stick', 'branch',
+        'banana peel', 'apple core', 'orange peel', 'lemon', 'lime', 'grape', 'strawberry',
+        'blueberry', 'raspberry', 'peach', 'pear', 'pineapple', 'mango', 'avocado',
+        'cucumber', 'pepper', 'bell pepper', 'spinach', 'kale', 'celery', 'radish',
+        'beet', 'turnip', 'parsnip', 'squash', 'pumpkin', 'zucchini', 'eggplant',
+        'mushroom', 'herbs', 'cilantro', 'parsley', 'basil', 'mint', 'rosemary',
+        'coffee grounds', 'tea bag', 'eggshell', 'nut shell', 'seed', 'pit',
+        'rice', 'pasta', 'oats', 'cereal', 'grain', 'flour', 'sugar', 'salt',
+        'grass', 'moss', 'bark', 'twig', 'sawdust', 'compost', 'organic matter'
     ],
     hazardous: [
         'battery', 'phone', 'computer', 'electronic', 'bulb', 'fluorescent', 'chemical',
-        'paint', 'oil', 'medicine', 'pill', 'syringe', 'needle'
+        'paint', 'oil', 'medicine', 'pill', 'syringe', 'needle', 'laptop', 'tablet',
+        'smartphone', 'cell phone', 'mobile phone', 'charger', 'cable', 'wire',
+        'television', 'tv', 'monitor', 'screen', 'keyboard', 'mouse', 'printer',
+        'scanner', 'router', 'modem', 'speaker', 'headphone', 'earbud', 'microphone',
+        'camera', 'camcorder', 'radio', 'stereo', 'cd player', 'dvd player',
+        'game console', 'xbox', 'playstation', 'nintendo', 'controller',
+        'light bulb', 'led bulb', 'cfl bulb', 'halogen bulb', 'tube light',
+        'thermometer', 'thermostat', 'smoke detector', 'alarm', 'remote control',
+        'pesticide', 'insecticide', 'herbicide', 'fertilizer', 'bleach', 'ammonia',
+        'solvent', 'thinner', 'adhesive', 'glue', 'nail polish', 'acetone',
+        'motor oil', 'brake fluid', 'antifreeze', 'gasoline', 'diesel', 'propane',
+        'aerosol', 'spray can', 'fire extinguisher', 'cleaning product', 'detergent',
+        'prescription', 'medication', 'antibiotic', 'vitamin', 'supplement',
+        'x-ray', 'medical waste', 'latex glove', 'mask', 'bandage'
     ]
 };
 
@@ -24,10 +48,10 @@ function classifyWaste(classifications: Array<{label: string, score: number}>) {
     
     for (const classification of classifications) {
         const label = classification.label.toLowerCase();
-        let wasteType = 'general_waste'; // default
+        let wasteType = null; 
         const confidence = classification.score;
         
-    
+ 
         for (const [category, keywords] of Object.entries(wasteMapping)) {
             for (const keyword of keywords) {
                 if (label.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(label)) {
@@ -35,15 +59,25 @@ function classifyWaste(classifications: Array<{label: string, score: number}>) {
                     break;
                 }
             }
-            if (wasteType !== 'general_waste') break;
+            if (wasteType !== null) break;
         }
         
-        results.push({
-            detected_object: classification.label,
-            waste_category: wasteType,
-            confidence: confidence,
-            disposal_advice: getDisposalAdvice(wasteType)
-        });
+      
+        if (wasteType === null) {
+            results.push({
+                detected_object: classification.label,
+                waste_category: 'not_waste',
+                confidence: confidence,
+                disposal_advice: 'This item is not classified as waste as per our data. If you believe this is waste, please check local disposal guidelines.'
+            });
+        } else {
+            results.push({
+                detected_object: classification.label,
+                waste_category: wasteType,
+                confidence: confidence,
+                disposal_advice: getDisposalAdvice(wasteType)
+            });
+        }
     }
     
     return results;

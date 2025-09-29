@@ -3,6 +3,7 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+
 type WasteItem = {
   detected_object?: string;
   waste_category?: string;
@@ -17,6 +18,7 @@ export default function ClassifyPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<WasteItem[] | null>(null);
+  
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const onFile = useCallback((f: File | null) => {
@@ -238,7 +240,8 @@ export default function ClassifyPage() {
               <div className="mb-3 text-sm text-neutral-300">Next actions</div>
               <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 <Link href="/maps" className="w-full sm:w-auto">
-                  <button className="relative inline-flex items-center justify-center gap-2 px-5 py-3 w-full text-base font-medium text-white rounded-lg cursor-pointer group sm:w-auto">
+                  <button className="relative inline-flex items-center justify-center gap-2 px-5 py-3 w-full text-base font-medium text-white rounded-lg cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 group sm:w-auto"
+                  disabled={!file || loading || !results || results.length === 0}>
                   <span className="absolute inset-0 bg-[#0e2a1d] rounded-lg -z-10" />
                   <span className="absolute inset-0 bg-gradient-to-b from-emerald-700/60 to-emerald-700/30 rounded-lg opacity-0 transition-opacity -z-10 group-hover:opacity-100" />
                   <span className="absolute inset-0 rounded-lg -z-20 ring-1 ring-[#1b3a29]" />
@@ -247,7 +250,8 @@ export default function ClassifyPage() {
                   </button>
                 </Link>
                 <Link href="/pickup" className="w-full sm:w-auto">
-                  <button className="inline-flex items-center justify-center gap-2 px-5 py-3 w-full text-base text-neutral-200 rounded-lg border-[#1f3b28] cursor-pointer border hover:bg-[#0f2618] sm:w-auto">
+                  <button className="inline-flex items-center justify-center gap-2 px-5 py-3 w-full text-base text-neutral-200 rounded-lg border-[#1f3b28] cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 border hover:bg-[#0f2618] sm:w-auto"
+                  disabled={!file || loading || !results || results.length === 0}>
                   Request a Pickup
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="opacity-90"><path d="M3 7h13l5 5v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" stroke="currentColor" strokeWidth="1.5"/><path d="M21 12h-6a2 2 0 0 1-2-2V7" stroke="currentColor" strokeWidth="1.5"/></svg>
                   </button>
