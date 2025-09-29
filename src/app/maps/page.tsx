@@ -48,7 +48,7 @@ export default function HomePage() {
           </div>
         </header>
 
-        <section className="p-6 h-44 bg-[#0a160f]/70 rounded-xl border-[#1b3a29] border backdrop-blur-md">
+        <section className="p-6 h-54 bg-[#0a160f]/70 rounded-xl border-[#1b3a29] border backdrop-blur-md">
           <h1 className="mb-1 text-2xl font-semibold">Dumping Yard Locator</h1>
           <p className="mb-5 text-sm text-neutral-300">
             Enter your 6-digit pincode to locate nearby authorized yards.
@@ -92,7 +92,7 @@ export default function HomePage() {
         </section>
 
         <section className="mt-4 p-2 bg-[#0a160f]/70 rounded-xl border-[#1b3a29] border backdrop-blur-md">
-          <div className="overflow-hidden h-[400px] rounded-lg">
+          <div className="overflow-hidden h-[500px] rounded-lg">
             {yards.length > 0 ? (
               <Map yards={yards} />
             ) : (
