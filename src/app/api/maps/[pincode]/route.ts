@@ -72,6 +72,7 @@ export async function GET(
         .filter(yard => yard.distance <= radius)
         .sort((a, b) => a.distance - b.distance)
         .slice(0, 10) // Limit to 10 nearest yards
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .map(({ distance, ...yard }) => yard); // Remove distance from final result
 
     } else {
