@@ -2,7 +2,7 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getAllYards, updateBinStatus, getStatusColor, getStatusText, getWasteTypeIcon, type DumpingYard } from "@/data/dumpingYards";
+import { getAllYards, updateBinStatus, getWasteTypeIcon, type DumpingYard } from "@/data/dumpingYards";
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
@@ -192,7 +192,7 @@ export default function Dashboard() {
 
         {/* Tips Section */}
         <div className="mt-12 p-6 rounded-lg glass">
-          <h2 className="text-xl font-semibold mb-4">Today's Tip</h2>
+          <h2 className="text-xl font-semibold mb-4">Today&apos;s Tip</h2>
           <div className="flex items-start gap-4">
             <div className="text-2xl">💡</div>
             <div>
