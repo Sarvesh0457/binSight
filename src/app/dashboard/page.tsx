@@ -78,14 +78,21 @@ export default function Dashboard() {
 
   return (
     <main className="min-h-screen bg-black text-white bg-grid bg-noise">
-      <div className="mx-auto px-6 py-20 max-w-6xl md:px-8">
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">Dashboard</h1>
-          <p className="mx-auto mt-2 max-w-2xl text-sm text-neutral-300">
-            Monitor your waste management and track your environmental impact.
-          </p>
+      {/* Hero Section with Spotlight */}
+      <section className="relative flex flex-col items-center justify-center mx-auto px-6 max-w-6xl py-20 text-center hero-spotlight md:px-8">
+        {/* decorative gradient ring */}
+        <div className="absolute left-1/2 h-[28rem] w-[28rem] rounded-full blur-3xl pointer-events-none -top-32 -translate-x-1/2" style={{background:"radial-gradient(closest-side, rgba(22,163,74,0.15), transparent)"}} />
+        
+        <div className="inline-flex items-center gap-2 px-3 py-1 text-xs text-neutral-300 bg-[#07100c]/70 rounded-full border-[#1b3a29] border mb-6">
+          <span className="h-1.5 w-1.5 rounded-full" style={{background: "#16a34a"}} />
+          Analytics & Monitoring
         </div>
+        
+        <h1 className="text-3xl font-semibold tracking-tight md:text-4xl mb-4">Dashboard</h1>
+        <p className="mx-auto max-w-2xl text-sm text-neutral-300">
+          Monitor your waste management and track your environmental impact.
+        </p>
+      </section>
 
         {/* Overview Stats */}
         <div className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-4">
@@ -205,7 +212,6 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-      </div>
     </main>
   );
 }
