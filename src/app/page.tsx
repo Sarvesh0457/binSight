@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+
+
 export default function Home() {
   return (
     <main className="overflow-hidden relative min-h-screen text-white bg-black bg-grid bg-noise">
@@ -24,7 +26,7 @@ export default function Home() {
         </p>
 
         <div className="flex items-center justify-center gap-3 mt-9 border-[#1b3a29] rounded-full border-2">
-          <Link href="/classify" className="relative inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-white rounded-lg group">
+          <Link href="/auth/login" className="relative inline-flex items-center gap-2 px-5 py-3 text-sm font-medium text-white rounded-lg group">
             <span className="absolute inset-0 bg-[#0e2a1d] rounded-lg -z-10" />
             <span className="absolute inset-0 bg-gradient-to-b from-emerald-700/60 to-emerald-700/30 rounded-lg opacity-0 transition-opacity -z-10 group-hover:opacity-100" />
             <span className="absolute inset-0 rounded-lg -z-20 ring-1 ring-[#1b3a29]" />
@@ -133,7 +135,7 @@ export default function Home() {
           <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">Ready to sort smarter?</h2>
           <p className="mx-auto mt-2 max-w-2xl text-sm text-neutral-300">Start with a single item and see what BinSight suggests.</p>
           <div className="mt-8">
-            <Link href="/classify" className="relative inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white rounded-lg group">
+            <Link href="/auth/login" className="relative inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white rounded-lg group">
               <span className="absolute inset-0 bg-[#0e2a1d] rounded-lg -z-10" />
               <span className="absolute inset-0 bg-gradient-to-b from-emerald-700/60 to-emerald-700/30 rounded-lg opacity-0 transition-opacity -z-10 group-hover:opacity-100" />
               <span className="absolute inset-0 rounded-lg -z-20 ring-1 ring-[#1b3a29]" />

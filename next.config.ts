@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   turbopack: {
-    root: "/home/dakshh/binsight"
+    root: "/home/dakshh/binSight"
   }
 };
 
