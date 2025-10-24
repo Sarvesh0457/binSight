@@ -67,7 +67,7 @@ export default function Home() {
             {t: "Pick the next step", d: "Decide to store, recycle, compost, or discard based on the classification.", icon:(
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="opacity-90"><path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
             )},
-            {t: "Find disposal (soon)", d: "Discover nearby authorized centers for responsible disposal.", icon:(
+            {t: "Find disposal", d: "Discover nearby authorized centers for responsible disposal.", icon:(
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="opacity-90"><path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11Z" stroke="currentColor" strokeWidth="1.5"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.5"/></svg>
             )},
             {t: "History (soon)", d: "Keep a lightweight log of recent scans for quick reference.", icon:(
