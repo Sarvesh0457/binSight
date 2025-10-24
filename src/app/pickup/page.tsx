@@ -1,7 +1,24 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import zod from "zod";
 
+const contactNoSchema=zod.string().min(10, "Contact number must be at least 10 digits").max(10, "Contact number must be at most 10 digits");
+const pincodeSchema=zod.string().min(6, "Pincode must be at least 6 digits").max(6, "Pincode must be at most 6 digits");
+const citySchema=zod.string().min(3, "City must be at least 3 characters").max(30, "City must be at most 30 characters");
+const areaSchema=zod.string().min(3, "Area must be at least 3 characters").max(30, "Area must be at most 30 characters");
+const addressSchema=zod.string().min(10, "Address must be at least 10 characters").max(100, "Address must be at most 100 characters");
+const notesSchema=zod.string().max(100, "Notes must be at most 100 characters");
+
+const formSchema=zod.object({
+  name: zod.string().min(3, "Name must be at least 3 characters").max(30, "Name must be at most 30 characters"),
+  contactNo: contactNoSchema,
+  pincode: pincodeSchema,
+  city: citySchema,
+  area: areaSchema,
+  address: addressSchema,
+  notes: notesSchema,
+});
 export default function PickupPage() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -15,6 +32,11 @@ export default function PickupPage() {
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
+    const validation = formSchema.safeParse(fd);
+    if (!validation.success) {
+      setNotice(validation.error.message);
+      return;
+    }
     const name = String(fd.get("name") || "").trim();
     setNotice(`Thanks${name ? `, ${name}` : ""}! Pickup scheduled within 3–6 hours.`);
     e.currentTarget.reset();
