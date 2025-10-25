@@ -148,7 +148,7 @@ export default function HomePage() {
         <section className="mt-4 p-2 bg-[#0a160f]/70 rounded-xl border-[#1b3a29] border backdrop-blur-md">
           <div className="overflow-hidden h-[400px] rounded-lg">
             {yards.length > 0 && mapCenter ? (
-              <Map key={`${mapCenter?.lat}-${mapCenter?.lon}`} yards={yards} center={mapCenter} />
+              <Map yards={yards} center={mapCenter} />
             ) : (
               <div className="flex items-center justify-center h-full text-neutral-400">
                 {loading ? "Loading..." : error ? error : "Enter a pincode to search"}
