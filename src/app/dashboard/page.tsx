@@ -94,6 +94,7 @@ export default function Dashboard() {
         </p>
       </section>
 
+      <div className="mx-auto px-6 py-8 max-w-6xl md:px-8">
         {/* Overview Stats */}
         <div className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-4">
           {[
@@ -212,6 +213,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+      </div>
     </main>
   );
 }

@@ -20,6 +20,7 @@ export default function Navbar() {
           <Link href="/classify" className="text-neutral-300 transition-colors cursor-pointer hover:text-white">Classify</Link>
           <Link href="/smartbins" className="text-neutral-300 transition-colors cursor-pointer hover:text-white">SmartBins</Link>
           <Link href="/rewards" className="text-neutral-300 transition-colors cursor-pointer hover:text-white">Rewards</Link>
+          <Link href="/leaderboard" className="text-neutral-300 transition-colors cursor-pointer hover:text-white">Leaderboard</Link>
           <Link href="/dashboard" className="text-neutral-300 transition-colors cursor-pointer hover:text-white">Dashboard</Link>
         </nav>
 

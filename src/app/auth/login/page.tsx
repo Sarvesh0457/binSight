@@ -32,7 +32,7 @@ export default function LoginPage() {
         throw new Error(result.error);
       }
       if (result?.ok) {
-        window.location.href = "/classify";
+        window.location.href = "/dashboard";
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong.');
