@@ -34,7 +34,7 @@ export default function Rewards() {
   const bins = getAllYards();
   
   // Mock data for rewards
-  const currentPoints = 1250;
+  const currentPoints = 732;
   const pointsHistory = [
     { date: "2025-01-24", action: "Recycled plastic bottle at AMC DUMPING YARD", points: 50 },
     { date: "2025-01-23", action: "Composted food waste at Kachre se Azadi", points: 30 },

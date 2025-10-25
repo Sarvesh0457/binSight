@@ -32,13 +32,28 @@ export default function PickupPage() {
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const validation = formSchema.safeParse(fd);
+    
+    // Extract form data and convert to object
+    const formData = {
+      name: String(fd.get("name") || "").trim(),
+      contactNo: String(fd.get("contactNo") || "").trim(),
+      pincode: String(fd.get("pincode") || "").trim(),
+      city: String(fd.get("city") || "").trim(),
+      area: String(fd.get("area") || "").trim(),
+      address: String(fd.get("address") || "").trim(),
+      notes: String(fd.get("notes") || "").trim(),
+    };
+    
+    const validation = formSchema.safeParse(formData);
     if (!validation.success) {
-      setNotice(validation.error.message);
+      const errorMessages = validation.error.issues.map(issue => 
+        `${issue.path.join('.')}: ${issue.message}`
+      ).join(', ');
+      setNotice(`Validation errors: ${errorMessages}`);
       return;
     }
-    const name = String(fd.get("name") || "").trim();
-    setNotice(`Thanks${name ? `, ${name}` : ""}! Pickup scheduled within 3–6 hours.`);
+    
+    setNotice(`Thanks${formData.name ? `, ${formData.name}` : ""}! Pickup scheduled within 3–6 hours.`);
     e.currentTarget.reset();
   };
 
@@ -70,8 +85,8 @@ export default function PickupPage() {
               <input id="name" name="name" required placeholder="John Doe" className="px-3 py-2 w-full text-sm bg-[#0a180e] rounded-md border-[#1b3a29] outline-none border focus:ring-2 focus:ring-emerald-700/40" />
             </div>
             <div>
-              <label htmlFor="phone" className="block mb-1 text-sm text-neutral-300">Phone number</label>
-              <input id="phone" name="phone" required inputMode="tel" pattern="[0-9+\-() ]{7,}" placeholder="+91 98765 43210" className="px-3 py-2 w-full text-sm bg-[#0a180e] rounded-md border-[#1b3a29] outline-none border focus:ring-2 focus:ring-emerald-700/40" />
+              <label htmlFor="contactNo" className="block mb-1 text-sm text-neutral-300">Phone number</label>
+              <input id="contactNo" name="contactNo" required inputMode="tel" pattern="[0-9+\-() ]{7,}" placeholder="+91 98765 43210" className="px-3 py-2 w-full text-sm bg-[#0a180e] rounded-md border-[#1b3a29] outline-none border focus:ring-2 focus:ring-emerald-700/40" />
             </div>
             <div>
               <label htmlFor="pincode" className="block mb-1 text-sm text-neutral-300">Pincode</label>

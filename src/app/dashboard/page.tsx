@@ -100,7 +100,7 @@ export default function Dashboard() {
           {[
             { label: "Total Bins", value: bins.length.toString(), icon: "🗑️" },
             { label: "Avg Fill Level", value: `${Math.round(bins.reduce((acc, bin) => acc + (bin.fillPercentage || 0), 0) / bins.length)}%`, icon: "📊" },
-            { label: "Points Earned", value: "1,250", icon: "⭐" },
+            { label: "Points Earned", value: "732", icon: "⭐" },
             { label: "Active Locations", value: new Set(bins.map(bin => bin.pincode)).size.toString(), icon: "📍" },
           ].map((stat, index) => (
             <div key={index} className="p-4 rounded-lg glass text-center">
